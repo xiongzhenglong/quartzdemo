@@ -87,26 +87,35 @@ namespace QuartzDemo
                 double totalmoney = maxprice * maxcount;
                 double minmoney = minprice * mincount;
                 Console.WriteLine(maxprice+":"+totalmoney+"----"+minprice+":"+minmoney);
-                if (ceo.order !=null && ceo.order.Count>0)
+                if (ceo.order != null && ceo.order.Count > 0)
                 {
                     foreach (var o in ceo.order)
                     {
                         if (double.Parse(o.price) != maxprice)
                         {
-                            chexiao(sec_, o.id);
+                            if (o.type == 1)
+                            {
+                                chexiao(sec_, o.id);
+
+                            }
                         }
                     }
                 }
-                if (totalmoney> 300000 )
+                if (totalmoney> 3000 )
                 {
-                    if (ceo.order != null && ceo.order.Count > 0)
+                    if (ceo.order != null && ceo.order.Count > 1)
                     {
                         Console.WriteLine("2:" + totalmoney);
                     }
                     else
                     {
-                        buy(sec_, maxcount.ToString(), maxprice.ToString());
-                        Console.WriteLine("1:"+totalmoney);
+                        if (maxprice < 0.00095)
+                        {
+                            buy(sec_, "3000000", maxprice.ToString());
+                            Console.WriteLine("1:" + totalmoney);
+                        }
+                        
+                      
                     }
                     
                    
