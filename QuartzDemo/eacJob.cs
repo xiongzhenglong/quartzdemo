@@ -123,9 +123,13 @@ namespace QuartzDemo
                         foreach (var o in ceo.order)
                         {
 
-                            if (double.Parse(o.price) != maxprice)
+                            if (double.Parse(o.price) != maxprice || totalmoney < 1800)
                             {
-                                chexiao(sec_, o.id);
+                                if (o.type == 1)
+                                {
+                                    chexiao(sec_, o.id);
+                                }
+                               
                             }
                           
                         }
@@ -133,19 +137,20 @@ namespace QuartzDemo
 
 
 
-                    if (ceo.order != null && ceo.order.Count > 0)
+                    if (ceo.order != null && ceo.order.Count > 1)
                     {
                         //Console.WriteLine("2:" + totalmoney);
                     }
                     else
                     {
-                        if (totalmoney > 1000)
+                        if (totalmoney > 1000 && maxprice < 0.007810)
                         {
-                            if (minprice / maxprice < 1.02)
-                            {
-                                double buymoney = minmoney <= 1000 ? minmoney : 1000;
-                                buy(sec_, (buymoney / minprice).ToString("0.00"), minprice.ToString());
-                            }
+                            //if (minprice / maxprice < 1.02)
+                            //{
+                            //    double buymoney = minmoney <= 1000 ? minmoney : 1000;
+                            //    buy(sec_, (buymoney / minprice).ToString("0.00"), minprice.ToString());
+                            //}
+
                             buy(sec_, (1000 / maxprice).ToString("0.00"), maxprice.ToString());
                         }
                         
