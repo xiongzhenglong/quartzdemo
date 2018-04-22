@@ -6,6 +6,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="dogeJob.cs" />
+    <Compile Remove="eosJob.cs" />
+    <Compile Remove="oiocJob.cs" />
+    <Compile Remove="PrintTheTimeJob.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
     <PackageReference Include="Quartz" Version="3.0.4" />
     <PackageReference Include="RestSharp" Version="106.2.1" />
