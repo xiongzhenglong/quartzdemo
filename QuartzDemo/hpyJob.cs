@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 namespace QuartzDemo
 {
     [DisallowConcurrentExecution]
-    class eacJob : IJob
+    class hpyJob : IJob
     {
 
-        private static string tag = "eac";
+        private static string tag = "hpy";
         private static string origin = "https://ceo.bi";
         private static string url_index = $"{origin}/trade/index_json?market={tag}_cny";
         private static string url_buy = $"{origin}/trade/up.html";
@@ -69,7 +69,7 @@ namespace QuartzDemo
             request.AddHeader("x-requested-with", "XMLHttpRequest");
             request.AddHeader("origin", origin);
             request.AddHeader("accept", "application/json, text/javascript, */*; q=0.01");
-            
+
 
             request.AddParameter("market", $"{tag}_cny");
             request.AddParameter("num", num);
@@ -87,7 +87,7 @@ namespace QuartzDemo
             request.AddHeader("cookie", $"aliyungf_tc=AQAAABcs4VQ2wwoAzi2M0ufA9uQkjTEh; JSPSESSID={sessionid}");
             request.AddHeader("accept-language", "zh-CN,zh;q=0.9");
             request.AddHeader("accept-encoding", "gzip, deflate, br");
-            request.AddHeader("referer",refer);
+            request.AddHeader("referer", refer);
             request.AddHeader("content-type", "application/x-www-form-urlencoded");
             request.AddHeader("user-agent", "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36");
             request.AddHeader("x-requested-with", "XMLHttpRequest");
@@ -124,13 +124,13 @@ namespace QuartzDemo
 
             try
             {
-                
+
 
                 string sec_ = "";
                 var ceo = getIndex(out sec_);
                 Console.WriteLine(ceo.finance[0]);
-               
-                if (ceo.depth.s!=null)
+
+                if (ceo.depth.s != null)
                 {
                     double maxprice = double.Parse(ceo.depth.b[0][0]);
                     double maxcount = double.Parse(ceo.depth.b[0][1]);
@@ -139,7 +139,7 @@ namespace QuartzDemo
                     double mincount = double.Parse(ceo.depth.s[9][1]);
                     double totalmoney = maxprice * maxcount;
                     double minmoney = minprice * mincount;
-                    Console.WriteLine(minmoney+"---"+minprice/maxprice+"---"+maxprice);
+                    Console.WriteLine(minmoney + "---" + minprice / maxprice + "---" + maxprice);
 
                     if (ceo.order != null)
                     {
@@ -148,43 +148,25 @@ namespace QuartzDemo
 
                             if (double.Parse(o.price) != maxprice || totalmoney < 1800)
                             {
-                                
-                                    chexiao(sec_, o.id);
-                                
-                               
+
+                                chexiao(sec_, o.id);
+
+
                             }
-                          
+
                         }
                     }
 
-                    if (maxprice >= 0.009)
+                    if (maxprice >= 0.170)
                     {
 
                         double maxsellcount = ceo.finance[2] - 1;
                         sell(sec_, maxsellcount.ToString("0.00"), maxprice.ToString());
                     }
 
-                    if (ceo.order != null && ceo.order.Count > 0)
-                    {
-                        //Console.WriteLine("2:" + totalmoney);
-                    }
-                    else
-                    {
-                        if (totalmoney > 1000 && maxprice < 0.007810)
-                        {
-                            //if (minprice / maxprice < 1.02)
-                            //{
-                            //    double buymoney = minmoney <= 1000 ? minmoney : 1000;
-                            //    buy(sec_, (buymoney / minprice).ToString("0.00"), minprice.ToString());
-                            //}
-
-                            buy(sec_, (1000 / maxprice).ToString("0.00"), maxprice.ToString());
-                        }
-                        
-                       
-                    }
+                   
                 }
-                
+
             }
             catch (Exception ex)
             {
