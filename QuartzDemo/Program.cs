@@ -25,11 +25,20 @@ namespace QuartzDemo
             //var ceo_hpyJob =
             //   JobBuilder.Create<hpyJob>()
             //   .Build();
-            var ceo_mtJob =
-             JobBuilder.Create<mtJob>()
+            //var ceo_mtJob =
+            // JobBuilder.Create<mtJob>()
+            // .Build();
+
+            var ceo_bitJob =
+             JobBuilder.Create<bitJob>()
              .Build();
+            //  var ceo_eosJob =
+            //JobBuilder.Create<eosJob>()
+            //.Build();
 
-
+            //     var ceo_oiocJob =
+            //JobBuilder.Create<oiocJob>()
+            //.Build();
 
             //var ceo_eacJob =
             //   JobBuilder.Create<eacJob>()
@@ -38,7 +47,9 @@ namespace QuartzDemo
             // Schedule them to run
 
 
-            await scheduler.ScheduleJob(ceo_mtJob, CreateTrigger());
+            //await scheduler.ScheduleJob(ceo_mtJob, CreateTrigger());
+            await scheduler.ScheduleJob(ceo_bitJob, CreateTrigger());
+            //await scheduler.ScheduleJob(ceo_oiocJob, CreateTrigger());
             //await scheduler.ScheduleJob(ceo_hpyJob, CreateTrigger());
 
             await scheduler.Start();

@@ -18,7 +18,7 @@ namespace QuartzDemo
         private static string refer = $"{origin}/t/cny_{tag}.jsp";
 
         private static string url_referprice = "";
-        private static string sessionid = "nkn1qpraha5vcev59mcg21mqg7";
+        private static string sessionid = "onri4qmn5ls8rein0tqg8e1ep5";
 
         public CEO getIndex(out string sec_)
         {
@@ -141,52 +141,52 @@ namespace QuartzDemo
                     double minmoney = minprice * mincount;
                     Console.WriteLine(minmoney + "---" + minprice / maxprice + "---" + maxprice);
 
-                    if (ceo.order != null)
-                    {
-                        foreach (var o in ceo.order)
-                        {
+                    //if (ceo.order != null)
+                    //{
+                    //    foreach (var o in ceo.order)
+                    //    {
 
-                            if (double.Parse(o.price) != maxprice || totalmoney < 1300)
-                            {
+                    //        if (double.Parse(o.price) != maxprice || totalmoney < 1300)
+                    //        {
 
-                                chexiao(sec_, o.id);
+                    //            chexiao(sec_, o.id);
 
 
-                            }
+                    //        }
 
-                        }
-                    }
+                    //    }
+                    //}
 
-                    if (maxprice >= 0.165)
-                    {
+                    //if (maxprice >= 0.160)
+                    //{
 
-                        //double maxsellcount = ceo.finance[2] - 1 ;
-                        double maxsellcount = totalmoney > 1000 ? (1000 / maxprice ) : maxcount;
-                        sell(sec_, (maxsellcount-1).ToString("0.00"), maxprice.ToString());
-                    }
+                    //    //double maxsellcount = ceo.finance[2] - 1 ;
+                    //    double maxsellcount = totalmoney > 1000 ? (1000 / maxprice ) : maxcount;
+                    //    sell(sec_, (maxsellcount-1).ToString("0.00"), maxprice.ToString());
+                    //}
 
-                    if (ceo.order != null && ceo.order.Count > 0)
-                    {
-                        //Console.WriteLine("2:" + totalmoney);
-                    }
-                    else
-                    {
-                        if (totalmoney > 2000 && maxprice<0.123)
-                        {
-                            //if (minprice / maxprice < 1.01)
-                            //{
-                            //    double buymoney = minmoney <= 1000 ? minmoney : 1000;
-                            //    buy(sec_, (buymoney / minprice).ToString("0.00"), minprice.ToString());
-                            //    Console.WriteLine("qiang " + buymoney);
+                    //if (ceo.order != null && ceo.order.Count > 0)
+                    //{
+                    //    //Console.WriteLine("2:" + totalmoney);
+                    //}
+                    //else
+                    //{
+                    //    if (totalmoney > 2000 && maxprice<0.123)
+                    //    {
+                    //        //if (minprice / maxprice < 1.01)
+                    //        //{
+                    //        //    double buymoney = minmoney <= 1000 ? minmoney : 1000;
+                    //        //    buy(sec_, (buymoney / minprice).ToString("0.00"), minprice.ToString());
+                    //        //    Console.WriteLine("qiang " + buymoney);
 
-                            //}
+                    //        //}
                            
-                            buy(sec_, (ceo.finance[0] / maxprice-100).ToString("0.00"), maxprice.ToString());
-                            Console.WriteLine("buy 1000");
-                        }
+                    //        buy(sec_, (ceo.finance[0] / maxprice-100).ToString("0.00"), maxprice.ToString());
+                    //        Console.WriteLine("buy 1000");
+                    //    }
 
 
-                    }
+                    //}
                 }
 
             }

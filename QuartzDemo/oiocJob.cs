@@ -17,7 +17,7 @@ namespace QuartzDemo
         private static string refer = $"https://ceo.bi/t/cny_{tag}.jsp";
 
         private static string url_referprice = "";
-        private static string sessionid = "nkn1qpraha5vcev59mcg21mqg7";
+        private static string sessionid = "l0a8e76tii3s7oe6jahll544h0";
 
         public CEO getIndex(out string sec_)
         {
@@ -90,7 +90,7 @@ namespace QuartzDemo
          
             try
             {
-                reprice rp = getReferPrice("eos");
+                
 
                 string sec_ = "";
                 var ceo = getIndex(out sec_);
@@ -103,39 +103,39 @@ namespace QuartzDemo
                 double totalmoney = maxprice * maxcount;
                 double minmoney = minprice * mincount;
                 Console.WriteLine(maxprice+":"+totalmoney+"----"+minprice+":"+minmoney);
-                if (ceo.order != null && ceo.order.Count > 0)
-                {
-                    foreach (var o in ceo.order)
-                    {
-                        if (double.Parse(o.price) != maxprice)
-                        {
-                            if (o.type == 1)
-                            {
-                                chexiao(sec_, o.id);
+                //if (ceo.order != null && ceo.order.Count > 0)
+                //{
+                //    foreach (var o in ceo.order)
+                //    {
+                //        if (double.Parse(o.price) != maxprice)
+                //        {
+                //            if (o.type == 1)
+                //            {
+                //                chexiao(sec_, o.id);
 
-                            }
-                        }
-                    }
-                }
-                if (totalmoney> 3000 )
-                {
-                    if (ceo.order != null && ceo.order.Count > 1)
-                    {
-                        Console.WriteLine("2:" + totalmoney);
-                    }
-                    else
-                    {
-                        if (maxprice < 0.00095)
-                        {
-                            buy(sec_, "3000000", maxprice.ToString());
-                            Console.WriteLine("1:" + totalmoney);
-                        }
+                //            }
+                //        }
+                //    }
+                //}
+                //if (totalmoney> 3000 )
+                //{
+                //    if (ceo.order != null && ceo.order.Count > 1)
+                //    {
+                //        Console.WriteLine("2:" + totalmoney);
+                //    }
+                //    else
+                //    {
+                //        if (maxprice < 0.00095)
+                //        {
+                //            buy(sec_, "3000000", maxprice.ToString());
+                //            Console.WriteLine("1:" + totalmoney);
+                //        }
                         
                       
-                    }
+                //    }
                     
                    
-                }
+                //}
                 
 
 

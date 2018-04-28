@@ -18,7 +18,7 @@ namespace QuartzDemo
         private static string refer = $"{origin}/t/cny_{tag}.jsp";
 
         private static string url_referprice = "";
-        private static string sessionid = "nkn1qpraha5vcev59mcg21mqg7";
+        private static string sessionid = "onri4qmn5ls8rein0tqg8e1ep5";
 
         public CEO getIndex(out string sec_)
         {
